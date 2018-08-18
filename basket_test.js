@@ -12,11 +12,13 @@ describe('Test  http://www2.hm.com/pl', async function () {
         const driver = await new Builder().forBrowser('chrome').build();
         await driver.get('http://www2.hm.com/pl_pl/ona/produkty/sukienki.html');
         await driver.wait(until.elementLocated(By.css('input[class="product-items-content"]'), 5000));
+        await driver.findElement(By.css('div[class="modaloverlay responsive"] button[class="modalclose icon-close-black"]')).click();
         await driver.findElement(By.css('article[class="product-item "]')).click();
         await driver.wait(until.elementLocated(By.css('div[class="product-items-content"]'), 5000));
         let items = {};
-        items.dress1.
-
+        items.dress1.IDnumber = await driver.findElement(By.css('div[class="pdp-description-list"]')).getText();
+        items.dress1.pice = await driver.findElement(By.css('span[class="price-value"]')).getText();
+        
         let rzeczy = {};
         rzeczy.sukienka1 = {};
         rzeczy.sukienka2 = {};
