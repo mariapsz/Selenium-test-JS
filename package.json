@@ -1,0 +1,23 @@
+{
+  "name": "h-m__tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marjjjanna/h-m__tests.git"
+  },
+  "author": "Maria",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marjjjanna/h-m__tests/issues"
+  },
+  "homepage": "https://github.com/marjjjanna/h-m__tests#readme",
+  "dependencies": {
+    "mocha": "^5.2.0",
+    "selenium-webdriver": "^4.0.0-alpha.1"
+  }
+}
