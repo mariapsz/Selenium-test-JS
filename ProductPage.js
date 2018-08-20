@@ -23,9 +23,9 @@ class ProductPage {
 
     async selectSize() {
         await this.driver.findElement(By.css('div[class="picker small-picker item loaded"]')).click();
-        const size = await this.driver.findElement(By.css('div[class="picker-option"] :not(button[disable])')).getText();
+        const size = await this.driver.findElement(By.css('ul[class="picker-list"] button:not([disabled]) span[class="value"]')).getText();
         //await this.driver
-        
+          
         console.log(size);
     }
 }
