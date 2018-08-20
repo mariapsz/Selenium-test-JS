@@ -1,39 +1,45 @@
-const { Builder, By, Key, until } = require('selenium-webdriver');
-// const { expect } = require('chai');
+const {Builder} = require('selenium-webdriver');
+const {expect} = require('chai');
 
+const ProductPage = require('./ProductPage').ProductPage;
+const Chrome = require('./Chrome').Chrome;
 
 describe('Test  http://www2.hm.com/pl', async function () {
     this.timeout(0);
+    
+    let productPage;
+    let chrome;
+    let i = 0;
+    let driver;
 
-    it('compare amount and pice of items added to basket ', async function () {
+    before(async function() {
+        driver = await new Builder().forBrowser('chrome').build();
+        productPage = new ProductPage(driver);
+        chrome = new Chrome(driver);
+        ItemsInfo = [];        
+    });
+
+    it('compare amount and price of items added to basket ', async function () {
+
+       // const driver = await new Builder().forBrowser('chrome').build();
 
         this.timeout(0);
+        await chrome.loadURL('http://www2.hm.com/pl_pl/ona/produkty/sukienki.html');
+        await chrome.closeCookiesWindow();
+        await chrome.loadProductPage();
+        const a = await driver.findElement(By.css('p[class="pdp-description-text"]')).getText();
+        //ItemsInfo[i] = productPage.getItemInfo();
+        console.log(a);
 
-        const driver = await new Builder().forBrowser('chrome').build();
-        await driver.get('http://www2.hm.com/pl_pl/ona/produkty/sukienki.html');
-        await driver.wait(until.elementLocated(By.css('input[class="product-items-content"]'), 5000));
-        await driver.findElement(By.css('div[class="modaloverlay responsive"] button[class="modalclose icon-close-black"]')).click();
-        await driver.findElement(By.css('article[class="product-item "]')).click();
-        await driver.wait(until.elementLocated(By.css('div[class="product-items-content"]'), 5000));
-        let items = {};
-        items.dress1.IDnumber = await driver.findElement(By.css('div[class="pdp-description-list"]')).getText();
-        items.dress1.pice = await driver.findElement(By.css('span[class="price-value"]')).getText();
         
-        let rzeczy = {};
-        rzeczy.sukienka1 = {};
-        rzeczy.sukienka2 = {};
-        rzeczy.sukienka1.tytul = 'SUKIENKA PIERWSZA';
-        rzeczy.sukienka1.cena = '5000000000';
-        rzeczy.sukienka2.tytul = 'SUKIENKA DRUGA';
-        rzeczy.sukienka2.cena = '99999999999'; 
 
-        let rzeczyZKoszyka = {};
+        // let rzeczyZKoszyka = {};
 
         
     
 
 
-        await driver.close();
+        await driver.
         console.log('end of test');        
         })
     })

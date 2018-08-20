@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/marjjjanna/h-m__tests#readme",
   "dependencies": {
+    "chai": "^4.1.2",
     "mocha": "^5.2.0",
     "selenium-webdriver": "^4.0.0-alpha.1"
   }
