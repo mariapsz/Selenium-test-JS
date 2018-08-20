@@ -4,7 +4,6 @@ class Chrome {
  
     constructor(driver) {
         this.driver = driver;
-        console.log('new common added');
     }
 
     async loadURL(URL) {

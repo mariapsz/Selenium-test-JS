@@ -9,7 +9,6 @@ describe('Test  http://www2.hm.com/pl', async function () {
     
     let productPage;
     let chrome;
-    let i = 0;
     let driver;
 
     before(async function() {
@@ -21,16 +20,16 @@ describe('Test  http://www2.hm.com/pl', async function () {
 
     it('compare amount and price of items added to basket ', async function () {
 
-       // const driver = await new Builder().forBrowser('chrome').build();
-
+        //const driver = await new Builder().forBrowser('chrome').build();
+        
         this.timeout(0);
         await chrome.loadURL('http://www2.hm.com/pl_pl/ona/produkty/sukienki.html');
         await chrome.closeCookiesWindow();
         await chrome.loadProductPage();
-        const a = await driver.findElement(By.css('p[class="pdp-description-text"]')).getText();
-        //ItemsInfo[i] = productPage.getItemInfo();
-        console.log(a);
+        ItemsInfo[0] = await productPage.getItemInfo();
+        await productPage.selectSize();
 
+        
         
 
         // let rzeczyZKoszyka = {};
@@ -39,7 +38,7 @@ describe('Test  http://www2.hm.com/pl', async function () {
     
 
 
-        await driver.
+        
         console.log('end of test');        
         })
     })
