@@ -27,8 +27,8 @@ describe('Test  http://www2.hm.com/pl', async function () {
         await chrome.closeCookiesWindow();
         await chrome.loadProductPage();
         //ItemsInfo[0] = await productPage.getItemInfo();
-        console.log(await productPage.selectSize1());
-        //await productPage.addToBasket();
+        await chrome.closeSmallCookiesWindow();
+        await productPage.addToBasket();
         
         
 
