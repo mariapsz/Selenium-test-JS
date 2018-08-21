@@ -13,9 +13,9 @@ describe('Test  http://www2.hm.com/pl', async function () {
 
     before(async function() {
         driver = await new Builder().forBrowser('chrome').build();
-        productPage = new ProductPage(driver);
+        ItemsInfo = []; 
+        productPage = new ProductPage(driver, ItemsInfo);
         chrome = new Chrome(driver);
-        ItemsInfo = [];        
     });
 
     it('compare amount and price of items added to basket ', async function () {
@@ -26,9 +26,9 @@ describe('Test  http://www2.hm.com/pl', async function () {
         await chrome.loadURL('http://www2.hm.com/pl_pl/ona/produkty/sukienki.html');
         await chrome.closeCookiesWindow();
         await chrome.loadProductPage();
-        ItemsInfo[0] = await productPage.getItemInfo();
-        await productPage.selectSize();
-
+        //ItemsInfo[0] = await productPage.getItemInfo();
+        console.log(await productPage.selectSize1());
+        //await productPage.addToBasket();
         
         
 
