@@ -7,21 +7,16 @@ class ProductPage {
     }
 
     async addToBasket() {
-        //const Window = new window();
 
         if (await this.selectSize() != undefined) {
             await this.driver.findElement(By.css('ul[class="picker-list is-inline"] button[class="option"]:not([disabled])')).click();
-            const previousShoppingbagItemCount = await parseInt(await this.driver.findElement(By.css('span[class="shoppingbag-item-count"]')).getText());
-            await util.promisify(setTimeout)(4000);
+            const shoppingBagItemCountElement = await this.driver.findElement(By.css('span[class="shoppingbag-item-count"]'));
+            const shoppingBagItemCountText = await shoppingBagItemCountElement.getText();
+            const expectedShoppingBagCount = await parseInt(shoppingBagItemCountText) + 1;
+            await util.promisify(setTimeout)(6000);
             await this.driver.findElement((By.css('span[class="icon icon-shopping-bag-white"]'))).click();
-            await util.promisify(setTimeout)(3000);
-//            await .location.reload(true);
-            await this.driver.wait(until.elementLocated(By.css('span[class="shoppingbag-item-count"]')));
-            const currentShoppingbagItemCount = await parseInt(await this.driver.findElement(By.css('span[class="shoppingbag-item-count"]')).getText());
-            console.log("previous: " + previousShoppingbagItemCount);
-            console.log("current:  " + currentShoppingbagItemCount);
-            if (currentShoppingbagItemCount == previousShoppingbagItemCount + 1)
-                return true;
+            await this.driver.wait(until.elementTextIs(shoppingBagItemCountElement, expectedShoppingBagCount.toString()),30000);
+            return true;
         }
         return false;     
     }

@@ -1,6 +1,6 @@
 const {Builder} = require('selenium-webdriver');
 const {expect} = require('chai');
-const location = require('Location');
+//const location = require('Location');
 
 const ProductPage = require('./ProductPage').ProductPage;
 const Chrome = require('./Chrome').Chrome;
@@ -31,7 +31,7 @@ describe('Test  http://www2.hm.com/pl', async function () {
         await chrome.loadURL('http://www2.hm.com/pl_pl/index.html');
         await chrome.closeCookiesWindow();
         await chrome.closeSmallCookiesWindow();
-        await location.reload();
+       // await location.reload();
         
         await chrome.selectCategory('ONA');
         await chrome.selectSubcategory('Sukienki');
